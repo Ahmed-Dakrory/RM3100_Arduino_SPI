@@ -36,23 +36,38 @@ void RM3100::begin(){
 
 
            digitalWrite(CS,HIGH);
+		   
+		   delay(30);
+
+ digitalWrite(CS,LOW);
+    SPI.transfer(0x00);
+    SPI.transfer(0x00);
+    SPI.transfer(0x00);
+    digitalWrite(CS,HIGH); 
+	
 delay(30);
 
  digitalWrite(CS,LOW);
     SPI.transfer(0x04);
-    SPI.transfer(0x00);
-    SPI.transfer(0x64);
-    SPI.transfer(0x00);
-    SPI.transfer(0x64);
-    SPI.transfer(0x00);
-    SPI.transfer(0x64);
+    SPI.transfer(0x01);
+    SPI.transfer(0x90);
+    SPI.transfer(0x01);
+    SPI.transfer(0x90);
+    SPI.transfer(0x01);
+    SPI.transfer(0x90);
     digitalWrite(CS,HIGH); 
      
 
 
 delay(50);
 
-
+/*
+digitalWrite(CS,HIGH);
+  digitalWrite(CS,LOW);
+    SPI.transfer(0x01);
+    SPI.transfer(0x04);
+    digitalWrite(CS,HIGH);
+	*/
    
 digitalWrite(CS,HIGH);
   digitalWrite(CS,LOW);
@@ -64,7 +79,7 @@ digitalWrite(CS,HIGH);
  digitalWrite(CS,LOW);
     //set sample rate
     SPI.transfer(RM3100_TMRC_REG);
-    SPI.transfer(0x95); //about 1Hz
+    SPI.transfer(0x96); //about 1Hz
     digitalWrite(CS,HIGH);
 
 delay(20);
@@ -80,15 +95,7 @@ delay(20);
 int RM3100::readMag(float * MagValues){
 	
 
-   
-	digitalWrite(CS,HIGH);
-	digitalWrite(CS,LOW);
-    SPI.transfer(0x01);
-    SPI.transfer(CMM);
-    digitalWrite(CS,HIGH);
-   
-   
-
+	
     digitalWrite(CS,LOW);
     SPI.transfer(RM3100_POLL_REG);
     SPI.transfer(0b01110000);
@@ -121,7 +128,7 @@ if(state_drdy){
     }
 
     for (int k = 0; k < 3; k++) {
-    MagValues[k] = (float)count[k]/current_gain[k];
+    MagValues[k] = (float)count[k]*13.0/2.0;
     }
    
 }
