@@ -15,10 +15,11 @@ SCK    --> Pin 13
 
 ```
 
-![alt text](https://raw.githubusercontent.com/Ahmed-Dakrory/RM3100_Arduino_SPI/master/teensy.png)
+![alt text](https://github.com/Ahmed-Dakrory/RM3100_Arduino_SPI/blob/master/teensy.png)
 
 
-#Example
+# Example
+
 ```
 #include <RM3100.h>
 
