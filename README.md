@@ -1,7 +1,7 @@
 # RM3100_Arduino_SPI
 A Simple Arduino Library for RM3100 using SPI communication
 
-``
+```
 # The connection to Teensy 3.2
 RM3100 --> Teensy
 
@@ -13,13 +13,13 @@ VCC    --> 3.3V
 GND    --> GND
 SCK    --> Pin 13
 
-``
+```
 
 ![alt text](https://raw.githubusercontent.com/Ahmed-Dakrory/RM3100_Arduino_SPI/master/teensy.png)
 
 
 #Example
-``
+```
 #include <RM3100.h>
 
 RM3100 rm3100(10,2);  // 10 is CS, 2 is DRDY
@@ -39,6 +39,6 @@ if(head!=NULL)
 
 }
 
-``
+```
 
 
